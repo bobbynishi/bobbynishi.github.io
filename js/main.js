@@ -189,7 +189,7 @@ function navClassRemove () {
 	$("#topCont").removeClass("addTop");
 }
 function map() {
-  var myPos = new google.maps.LatLng(34.1460912, -118.1459524);
+  var myPos = new google.maps.LatLng(33.9559033, -118.3045919);
 
   // Create an array of styles.
   var styles = [
@@ -259,7 +259,7 @@ function map() {
   var marker = new google.maps.Marker({
 	position: myPos,
 	map: map,
-	title:"Pasadena, CA"
+	title:"Los Angeles, CA"
   });
 
   //Associate the styled map with the MapTypeId and set it to display.
@@ -267,107 +267,6 @@ function map() {
   map.setMapTypeId('map_style');
 }
 
-function contactForm() {
-	// form validators
-	$('#contactForm').bootstrapValidator({
-		container: 'tooltip',
-		feedbackIcons: {
-			valid: 'glyphicon glyphicon-ok',
-			invalid: 'glyphicon glyphicon-remove',
-			validating: 'glyphicon glyphicon-refresh'
-		},
-		fields: {
-			email: {
-				validators: {
-					notEmpty: {
-						message: 'The email address is required'
-					}
-				}
-			},
-			message: {
-				validators: {
-					notEmpty: {
-						message: 'The message body is required'
-					}
-				}
-			},
-			first: {
-				 validators: {
-					  notEmpty: {
-						enabled: true,
-						  message: 'Your first name is required'
-					}
-				 }
-			},
-			last: {
-				 validators: {
-					  notEmpty: {
-						enabled: true,
-						  message: 'Your last name is required'
-					}
-				 }
-			}/*,
-			telephone: {
-				 validators: {
-					  notEmpty: {
-						enabled: false,
-						  message: 'Please enter your telephone number (optional).'
-					}
-				 }
-			}*/
-		}
-	});
-	
-	
-	// contact form submit trigger
-	$('#contactForm').submit(function (event){
-		event.preventDefault();
-		
-		
-		// show css loader
-		$('#loading').fadeIn("fast");
-		
-		// prep data in JSON
-		var serializedData = $(this).serialize();
-		
-		$.ajax({
-			type: "POST",
-			url: "/php/contactForm.php",
-			data: serializedData,
-			dataType:'text'
-		})
-		.done(function(data) {
-			
-			$("#outputMsg").delay(100).show();
-			$("#contactForm, #centerHeader").hide();
-			$("#outputMsg").delay(100).addClass("outMsg");
-			$("#outputMsg").delay(150).html('<div class="column-title" id="centerHeader"><h2 style="text-align:center;">Success Submitting Message</h2><br><p>Thank you for your interest in our services.<br>Your message will be replied within the next 24 hours.</p></div>');
-
-			console.log (data.responseText);
-		})
-		.fail(function(data) {
-			//alert("error");
-			//alert(JSON.stringify(data));
-			$("#outputMsg").delay(100).show();
-			$("#outputMsg").delay(100).addClass("bg-danger outMsg");
-			//console.log (data.responseText);
-			$("#outputMsg").delay(100).html( "<div class='column-title' id='centerHeader'><h2 align='center'>An error occurred.</h2><br><p>" + data.responseText + "</p></div>" );
-
-		})
-		.always(function(jqXHR, textStatus, errorThrown) {
-			// Hide spinner image
-			$('#loading').fadeOut("fast");
-		})
-	});
-	
-	$('#contactForm').change(function () {
-		$("#outputMsg").slideUp("slow",function() {
-			$("#outputMsg").html('');
-			$("#outputMsg").removeClass("bg-danger outMsg");
-		});
-	});
-	
-}
 function initClasses() {
 	// parallax magic
 	$("#topbanner").addClass("img-holder");
@@ -515,7 +414,6 @@ function initClasses() {
 			}
 			
 			map();
-			contactForm();
 			break;
 		case "index":
 		case "":
