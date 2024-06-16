@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  
+
   <title>Contact Me</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=550, user-scalable=no" />
@@ -92,21 +92,33 @@
     </div>
 
     <div id="outputMsg"></div>
-    <form action="https://formspree.io/f/mwkggyrz" method="POST">
-      <label>
-        Your email:
-        <input type="email" name="email">
-      </label>
-      <label>
-        Your message:
-        <textarea name="message"></textarea>
-      </label>
-      <button type="submit">Send</button>
+    <form role="form" id="contactForm" class="bv-form" action="https://formspree.io/f/mwkggyrz" method="POST">
+      <div class="row form-group">
+        <div class="col-md-6 column-title">
+          Your email:
+        </div>
+        <div class="col-md-3 copy">
+          <input type="email" class="form-control" name="email" placeholder="Email Address (required)" required=""
+            data-bv-field="email">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-6 column-title">
+          Your message:
+        </div>
+        <div class="col-md-6 copy">
+          <textarea type="text" class="form-control" cols="40" rows="10" name="message" required=""
+            data-bv-field="message"></textarea>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-md-12 column-title">
+          <button type="submit">Send</button>
+        </div>
+      </div>
     </form>
 
-    <div class="row">
-
-    </div>
+    <div class="row">&nbsp;</div>
   </div>
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbsq6ymw8PNRB-FqcyhvKMmyNK4gAeKSg"> </script>
@@ -141,4 +153,5 @@
     ga('create', 'UA-5696388-1'); ga('send', 'pageview');
   </script>
 </body>
+
 </html>
